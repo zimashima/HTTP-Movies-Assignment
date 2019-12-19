@@ -11,8 +11,7 @@ export default class MovieList extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("http://localhost:5000/api/movies")
+    axios.get("http://localhost:5000/api/movies")
       .then(res => this.setState({ movies: res.data }))
       .catch(err => console.log(err.response));
   }

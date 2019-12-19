@@ -3,71 +3,78 @@ import axios from 'axios'
 
 const UpdateMovieForm = props => {
     const initialState = {
-        id: null,
+        id: '',
         title: '',
         director: '',
         metascore: '',
         stars: []
     }
     const [newValue, setNewValue] = useState(initialState)
-    const [newStar, setNewStar] = useState('')
+    const [starsText, setStars] = useState('')
 
     useEffect(()=> {
         axios.get(`http://localhost:5000/api/movies/${props.match.params.id}`)
         .then(res =>
             setNewValue(res.data))
         .catch(err=> console.log(err))
-    },[props.match.params.id])
+    }, [props.match.params.id])
 
     const handleValueChange = e => {
         setNewValue({...newValue, [e.target.name]: e.target.value})
     }
 
     const handleChangeSubmit = e =>{
-        e.preventDafault()
+        e.preventDafault()   
         axios.put(`http://localhost:5000/api/movies/${newValue.id}`, newValue)
         props.history.push('/')
     }
 
-
     return (
+        
         <>
         <div className="container-md">
-        <form className="form-group" onSubmit={handleChangeSubmit}>
+        <form className="form-group" onSubmit={handleChangeSubmit} >
 
             <div className="d-flex flex-column text-center mx-auto m-4 p-4" style={{maxWidth: 800}}>
 
                 <h3>Edit Movie Information</h3>
+
                 <label>Title</label>
                 <input type="text"
-                    name="name"
-                    defaultValue={newValue.title}
-                    onChange={handleValueChange}/>
+                    name="title"
+                    value={newValue.title}
+                    onChange={handleValueChange} 
+                    autoFocus
+                    />
+                    
                 <label>Director</label>
                 <input type="text" 
                     name="director"
-                    defaultValue={newValue.director}
-                    onChange={handleValueChange}/>
+                    value={newValue.director}
+                    onChange={handleValueChange} 
+                    autoFocus
+                    />
                 <label>MetaScore</label>
                 <input type="text" 
                     name="metascore"
-                    defaultValue={newValue.metascore}
-                    onChange={handleValueChange}/>
+                    value={newValue.metascore}
+                    onChange={handleValueChange} 
+                    autoFocus
+                    />
 
                 <label>Stars</label>
-                {newValue.stars.map( (star, index) => (
-                    <input type="text"
-                        name="stars"
-                        defaultValue={star} 
-                        onChange={e => {
-                            setNewStar(e.target.star)
-                            console.log(newStar)
-                            }
-                        }/>
-                ))
-                }
+                
+                <input type="text" 
+                    name="stars"
+                    value={newValue.stars}
+                    onChange={e => {
+                        setStars(e.target.value)
+                        setNewValue({...newValue, [e.target.name]: starsText.split(",")})
+                    }} 
+                    autoFocus
+                    />
 
-                <span class="btn btn-warning">Submit Edit</span>
+                <button className="btn btn-warning" type="submit">Submit Edit</button>
 
             </div>
             

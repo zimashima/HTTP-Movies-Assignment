@@ -23,10 +23,7 @@ const App = () => {
         }}
       />
 
-      <Route
-        path="/update_movie/:id"
-        component={UpdateMovieForm}
-      />
+      <Route path="/update-movie/:id" />
     </>
   );
 };
