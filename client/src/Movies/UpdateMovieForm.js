@@ -24,9 +24,11 @@ const UpdateMovieForm = props => {
     }
 
     const handleChangeSubmit = e =>{
-        e.preventDafault()   
+        e.preventDefault()   
         axios.put(`http://localhost:5000/api/movies/${newValue.id}`, newValue)
-        props.history.push('/')
+        .then(()=> props.history.push('/'))
+        .catch(err => console.log('caught you', err))
+        
     }
 
     return (
