@@ -47,6 +47,7 @@ export default class Movie extends React.Component {
     this.props.history.push(`/update-movie/${this.props.match.params.id}`)
   }
 
+
   
 
   render() {
@@ -61,6 +62,7 @@ export default class Movie extends React.Component {
         <span className="btn btn-success m-3" onClick={this.saveMovie}>
           Save Movie
         </span>
+  
         <span className="btn btn-warning m-3" onClick={this.handleEdit}>Edit Movie</span>
         <span className="btn btn-danger m-3" onClick={this.handleDelete}>Delete Movie</span>
         </div>

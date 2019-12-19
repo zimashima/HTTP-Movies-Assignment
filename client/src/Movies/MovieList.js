@@ -19,6 +19,7 @@ export default class MovieList extends Component {
   render() {
     return (
       <div className="movie-list">
+        <Link to="/add-movie/"><button className="btn btn-success">Add Movie</button></Link>
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
         ))}

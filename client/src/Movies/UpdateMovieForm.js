@@ -76,7 +76,7 @@ const UpdateMovieForm = props => {
                     autoFocus
                     />
 
-                <button className="btn btn-warning" type="submit">Submit Edit</button>
+                <button className="btn btn-warning" type="submit">Add a Movie</button>
 
             </div>
             

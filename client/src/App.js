@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import UpdateMovieForm from "./Movies/UpdateMovieForm"
+import AddMovieForm from './Movies/AddMovieForm'
 import Movie from "./Movies/Movie";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       />
 
       <Route path="/update-movie/:id" component={UpdateMovieForm}/>;
+      <Route path="/add-movie/" component={AddMovieForm}/>;
 
     </>
   );
